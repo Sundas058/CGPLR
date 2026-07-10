@@ -8,28 +8,6 @@ Authors: Sundas Iqbal, Danish Ali, Qing Tian, Jianping Gou, and Weihua Ou
 
 This repository contains a PyTorch implementation of CGPLR for unsupervised domain adaptation (UDA) in person re-identification. The method transfers knowledge from a labeled source dataset to an unlabeled target dataset by combining clustering-based pseudo-label generation, sample-level confidence estimation, confidence-guided pseudo-label refinement, and confidence-aware target-domain optimization.
 
-The manuscript PDF is included as `NN (1).pdf`.
-
-## Method Summary
-
-CGPLR addresses pseudo-label noise in cross-domain person Re-ID. Standard clustering-based UDA methods generate pseudo labels for target images and train on them directly, but unreliable assignments can be reinforced during iterative adaptation. CGPLR explicitly estimates sample reliability and uses that confidence signal in both pseudo-label refinement and optimization.
-
-The implementation follows the five main components described in Section 3 of the paper:
-
-1. **Source-domain initialization**  
-   The encoder is initialized on labeled source-domain data using identity classification and triplet metric learning.
-
-2. **Target-domain clustering**  
-   Target-domain embeddings are extracted, normalized, and clustered with DBSCAN to produce initial pseudo labels.
-
-3. **Confidence estimation**  
-   Each valid target sample receives a confidence score based on cluster-centroid consistency and local neighborhood consistency.
-
-4. **Pseudo-label refinement**  
-   High-confidence pseudo labels are preserved, while uncertain assignments are refined through nearest-centroid reassignment.
-
-5. **Confidence-aware learning**  
-   Refined pseudo labels and confidence weights are used to reduce the influence of uncertain samples during target-domain training.
 
 ## Repository Layout
 
