@@ -4,7 +4,7 @@ Official research code organization for the manuscript:
 
 **Confidence-Guided Pseudo-Label Refinement for Unsupervised Cross-Domain Person Re-Identification**
 
-Authors: Sundas Iqbal, Danish Ali, Qing Tian, Jianping Gou, and Weihua Ou
+Authors: Sundas Iqbal, Danish Ali, Qing Tian, Yuhui Zheng, Jianping Gou, and Weihua Ou
 
 This repository contains a PyTorch implementation of CGPLR for unsupervised domain adaptation (UDA) in person re-identification. The method transfers knowledge from a labeled source dataset to an unlabeled target dataset by combining clustering-based pseudo-label generation, sample-level confidence estimation, confidence-guided pseudo-label refinement, and confidence-aware target-domain optimization.
 
@@ -134,13 +134,11 @@ Other commonly used training settings:
 
 If this repository supports your work, cite the manuscript:
 
-```bibtex
-@article{iqbal2026cgplr,
-  title   = {Confidence-Guided Pseudo-Label Refinement for Unsupervised Cross-Domain Person Re-Identification},
-  author  = {Iqbal, Sundas and Ali, Danish and Tian, Qing and Gou, Jianping and Ou, Weihua},
-  journal = {Neural Networks},
-  year    = {2026}
+@unpublished{iqbal2026cgplr,
+  title  = {Confidence-Guided Pseudo-Label Refinement for Unsupervised Cross-Domain Person Re-Identification},
+  author = {Iqbal, Sundas and Ali, Danish and Tian, Qing and Zheng, Yuhui and Gou, Jianping and Ou, Weihua},
+  year   = {2026},
+  note   = {Manuscript submitted to IEEE Transactions on Circuits and Systems for Video Technology}
 }
-```
 
 Update the citation fields after acceptance with the final volume, pages, DOI, and publication year assigned by the journal.
