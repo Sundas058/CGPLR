@@ -28,16 +28,6 @@ flowchart LR
 |---|---|---|---|
 | ResNet-50 + BN neck | M→MSMT, MSMT→M, M→CUHK03-NP-D | 2,048-D, L2 normalized | 256 × 128 |
 
-## Manuscript results
-
-| Transfer | Rank-1 (%) | mAP (%) |
-|---|---:|---:|
-| Market-1501 ? MSMT17 | 76.40 ? 0.20 | 47.60 ? 0.25 |
-| MSMT17 ? Market-1501 | 95.10 ? 0.20 | 87.70 ? 0.25 |
-| Market-1501 ? CUHK03-NP-D | 67.30 ? 0.20 | 40.70 ? 0.25 |
-
-Values are the manuscript's reported mean ? sample SD over three seeds. Run-specific measurements are written to `metrics.json`.
-
 ## Quick start
 
 Install a matching PyTorch/torchvision build for your CUDA environment, then run:
@@ -153,19 +143,6 @@ Without `--execute`, the runner writes a command manifest. Suites are `main`, `s
 Zero consistency and discarding deferred samples differ in batch composition and BN statistics. No-temporal and temporal-weight zero are equivalent under identical conditions. Optional candidate gates are not active in the full configuration: its minimum size/reliability are 1/0.
 
 External competitor commands can be supplied with `--competitor-manifest`; the interface does not supply the competitor algorithm itself.
-
-## Diagnostics and statistics
-
-```bash
-python examples/analyze_revision.py diagnose --run logs/M_to_MSMT/full/seed_1 --data-dir data --output logs/M_to_MSMT/diagnostics/seed_1 --plot
-python examples/analyze_revision.py aggregate --runs logs/M_to_MSMT/full/seed_1 logs/M_to_MSMT/full/seed_2 logs/M_to_MSMT/full/seed_3 --output logs/M_to_MSMT/summary.json
-```
-
-Add `--baselines` with matched run directories for paired comparisons. Aggregation checks seed pairing, protocol fields, source hashes and environments. It reports mean, sample SD, paired differences, 95% t intervals and two-sided paired t-tests. P-values from the generic aggregator are unadjusted; the manuscript's four-comparison family uses Holm correction.
-
-Post-hoc correctness uses per-round cluster-majority identity mapping, with smallest-ID tie breaking and a fixed raw mapping for refined labels. Calibration uses all valid clustered samples, ten equal-width ECE bins and AUROC. The reliability plot uses the final saved round; decision summaries average the last five available rounds. Target identities enter these diagnostics only after training.
-
-The supplied manuscript diagnostic cohorts comprise 10,000 reassignment observations, separate temporal-event groups, and a matched 1,000-sample deferred cohort. Their exact analyzed windows and selection records are N/A in the supplied metadata. These fields are not inferred from the 50-round training budget. Definitions and counting conventions are given in [Protocol conventions](#protocol-conventions).
 
 ## Reproducibility
 
